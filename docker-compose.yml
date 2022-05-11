@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  sparkifydb:
+    image: postgres:latest
+    container_name: sparkifydb
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    restart: always
+    env_file:
+      - ./config/.env.dev  
+
+  jupyter_notebook:
+    build:
+      context: .
+      dockerfile: ./services/jupyter/Dockerfile
+    container_name: jupyter
+    ports: 
+      - 8888:8888
+    volumes:
+      - ./src:/home/jovyan/work/src
+      - ./data:/home/jovyan/work/data
+    env_file:
+      - ./config/.env.dev  
