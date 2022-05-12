@@ -74,17 +74,25 @@ Run create_tables.py:
 
 ```cmd
 
-docker compose run --rm jupyter_notebook python src/scripts/create_tables.py
+docker-compose run --rm jupyter_notebook python src/scripts/create_tables.py
 
 ```
 
-### Extract, Transfer and Load the data into the Database
+### Execute ETL Pipeline
 
 Run etl.py:
 
 ```cmd
 
 docker compose run --rm jupyter_notebook python src/scripts/etl.py
+
+```
+
+Alternatively, you can run the python scripts from a shell in the container:
+
+```cmd
+
+docker exec -it jupyter bash 
 
 ```
 
