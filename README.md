@@ -1,9 +1,5 @@
 # Sparkify Postgres
 
-ETL (Extract, Transform & Load) Pipline to extract user activity and song data from json files and ingestion into a Postgres Database.
-This Project is part of the [Udacity Data Engineering nanodegree](https://www.udacity.com/course/data-engineer-nanodegree--nd027).
-For convenience i have created a microservice infrastructure (powered by docker) to improve reproducibility.
-
 - [About](#about)
 - [Database Design](#database-design)
 - [ETL Pipeline Design](#etl-pipeline-design)
@@ -13,36 +9,25 @@ For convenience i have created a microservice infrastructure (powered by docker)
 
 ## About
 
-This project was created for Sparkify, a music streaming provider. To improve the added value for the
-customer, the analytics team needs to be able to query easily the song play activity.
-The system design does not allow easy analytics of the song play activity and therefore requires
-an ETL process in combination with database.
+A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app. Currently there is no easy way for Sparkify's analytics team to query their data to better understand their user's listening behaviour. In order to help out Sparkify's analytics team, we'll create an ETL (Extract, Transform and Load) Pipeline to extract user activity and song data from JSON files and ingest the data into a Postgres Database.  
 
 ## Database Design
 
 ### Data
 
-The raw data consists of
-
-- song_data JSON files: metadata about song and the song's artist.
-
-- log data JSON files: metadata about the user's activity.
-
+The data consists of JSON logs on user activity (**log_data**) and song meta data (**song_data**)
 
 ### Database Schema
 
-The analytics team is primarily interessted in the song play activity. Therefore the design is centered
-around the songplay data, leading to the following setup:
+Using the song and log datasets, we'll create a star schema optimized for queries on song play analysis. This includes the following tables:
 
-Central the songplay table (fact table ***songplays**).
-Connected to 4 dimension tables:
 
-- users
-- songs
-- time
-- artist
+- Fact table: **songplays**.
+- Dimension tables: **songs**, **artists**, **users**, **time**. 
 
-### ETL Pipeline Design
+![sparkify-postgres-schema](sparkify-postgres-schema.png)
+
+## ETL Pipeline Design
 
 The ETL pipline comprises the following components.
 
@@ -61,6 +46,8 @@ The ETL pipline comprises the following components.
 - Postgres
 
 ### Build the containers
+
+Ensure docker is installed.
 
 ```cmd
 
