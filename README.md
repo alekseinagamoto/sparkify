@@ -90,35 +90,45 @@ docker compose run --rm jupyter_notebook python src/scripts/etl.py
 
 ## Directory Structure
 
-- The Raw data of the Project can be found in **workspace/data** folder.
-- **workspace/create_table.py**
-  - Creates the sparkify database (drops the previous if one exists already).
-  - Drops all existing tables.
-  - Creates all tables.
-  - Closes the connection.
-- **workspace/sql_queries.py**
-  - Drop table sql statement
-  - Create table DDL for all tables
-  - Insert sql statements for all tables
-  - Select statement for ETL pipline
-  - Query lists (Lists of Drop, Create, Insert statements)
-- **workspace/etl.ipynb** is a helper tool for the desgin & development of the prototype of the ETL pipline.
-- **workspace/test.ipynb** is a helper tool to quickly check all tables.
-- **worksapce/etl.py** final ETL pipline of the project.
-- **workspace/Sample.ipynb** helper tool to get quickly experiment.
-- **README.md** documentation of the project.
-- **requirements.txt** packages installed in jupyter_notebook container
-- **docker-compose.yml** docker-compose file defining the services
-- **compose/jupyter-notebook/Dockerfile** Dockerfile for jupyter_notebook
-- **compose/postgres/Dockerfile** Dockerfile for postgres
-- **.envs/.postgres** Environment file containing user, password etc. !! Do not share this in your repository !!
-- **.gitignore** Python gitignore provided by GitHub
+```
+├── config                      
+|   └── .env.dev                <- Environment file
+|
+|
+├── data
+│   ├── log_data                <- Activity data.
+│   └── song_data               <- Song data.
+│
+│
+├── services
+|    └── jupyter
+|        └── Dockerfile        <- Docker file for jupter notebook.
+|
+|
+├── src                         <- Source code for use in this project.
+│   ├── notebooks           
+│   |   ├── etl.ipynb           <- Notebook for ETL development.
+│   |   └── test.ipynb          <- Notebook for ETL testing.
+│   |         
+|   └── scripts  
+│       ├── etl.py              <- Script to execute ETL pipeline.
+|       ├── create_tables.py    <- Script to create database and tables.
+│       └── sql_queries.py      <- Script with SQL queries.
+│      
+|
+├── docker-compose.yml          <- Docker-compose file for running the services.
+|
+|
+├── README.md                   <- README for developers using this project.
+├── poetry.lock                 <- The poetry.lock file for reproducing the analysis environment.
+└── pyproject.toml              <- The pyproject.toml file for reproducing the analysis environment.
+```
 
 ## References
 
 This project is part of the [Udacity Data Engineering nanodegree](https://www.udacity.com/course/data-engineer-nanodegree--nd027).
 
 - [Docker documentation](https://docs.docker.com/)
-- [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html)
+- [Jupyter notebook image](https://hub.docker.com/r/jupyter/minimal-notebook/tags/)
 - [Markdown guide](https://www.markdownguide.org/basic-syntax/)
 - [Poetry documentation](https://python-poetry.org/docs/)
