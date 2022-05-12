@@ -1,8 +1,8 @@
-version: "3"
+version: "3.8"
 
 services:
   sparkifydb:
-    image: postgres:latest
+    image: postgres:14.2
     container_name: sparkifydb
     ports:
       - 5432:5432
@@ -21,6 +21,5 @@ services:
       - 8888:8888
     volumes:
       - ./src:/home/jovyan/work/src
-      - ./data:/home/jovyan/work/data
     env_file:
       - ./config/.env.dev  
