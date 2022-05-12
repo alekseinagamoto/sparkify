@@ -5,8 +5,9 @@ This Project is part of the [Udacity Data Engineering nanodegree](https://www.ud
 For convenience i have created a microservice infrastructure (powered by docker) to improve reproducibility.
 
 - [About](#about)
-- [Database Schema and ETL Pipeline Design](#database-schema-etl-pipeline-design)
-- [Getting Started](#getting_started)
+- [Database Design](#database-design)
+- [ETL Pipeline Design](#etl-pipeline-design)
+- [Getting Started](#getting-started)
 - [Directory Strucure](#directory-structure)
 - [References](#references)
 
@@ -17,20 +18,16 @@ customer, the analytics team needs to be able to query easily the song play acti
 The system design does not allow easy analytics of the song play activity and therefore requires
 an ETL process in combination with database.
 
-## Database Schema and ETL Pipeline Design
+## Database Design
 
 ### Data
 
 The raw data consists of
 
-- song_data json files
-- log data files
+- song_data JSON files: metadata about song and the song's artist.
 
-**song_data**
-Song data contains the metadata about song AND the artist
+- log data JSON files: metadata about the user's activity.
 
-**log_data**
-Log data contains metadata about the user activity (e.g. When, Where, What song etc. )
 
 ### Database Schema
 
@@ -45,19 +42,19 @@ Connected to 4 dimension tables:
 - time
 - artist
 
-### ETL Pipeline
+### ETL Pipeline Design
 
-The ETL pipline has 5 essential components.
+The ETL pipline comprises the following components.
 
-1. ETL of song data into songs from song_data.
-2. ETL of artist_data into artist from song_data.
-3. ETL of time_data from logs
-4. ETL of user_data from logs
-5. ETL of songplay_data from logs (and referencing to the other tables)
+- ETL of song data into songs from song_data.
+- ETL of artist_data into artist from song_data.
+- ETL of time_data from logs
+- ETL of user_data from logs
+- ETL of songplay_data from logs (and referencing to the other tables)
 
 ## Getting Started
 
-## Tech Stack
+### Tech Stack
 
 - Docker
 - Jupyter Notebook
@@ -130,7 +127,7 @@ Show how much total songplay activity by user id:
 
 ```
 
-## Files
+## Directory Structure
 
 - The Raw data of the Project can be found in **workspace/data** folder.
 - **workspace/create_table.py**
@@ -156,7 +153,7 @@ Show how much total songplay activity by user id:
 - **.envs/.postgres** Environment file containing user, password etc. !! Do not share this in your repository !!
 - **.gitignore** Python gitignore provided by GitHub
 
-### References
+## References
 
 This project is part of the [Udacity Data Engineering nanodegree](https://www.udacity.com/course/data-engineer-nanodegree--nd027).
 
