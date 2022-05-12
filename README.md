@@ -29,13 +29,13 @@ Using the song and log datasets, we'll create a star schema optimized for querie
 
 ## ETL Pipeline Design
 
-The ETL pipline comprises the following components.
+The ETL pipline comprises the following components:
 
-- ETL of song data into songs from song_data.
-- ETL of artist_data into artist from song_data.
-- ETL of time_data from logs
-- ETL of user_data from logs
-- ETL of songplay_data from logs (and referencing to the other tables)
+- ETL of song data into songs table from song_data JSON files.
+- ETL of artist data into artists table from song_data JSON files.
+- ETL of time data into time table from log_data JSON files.
+- ETL of user data into users table from log_data JSON files.
+- ETL of songplay data into songplays table from log_data JSON files.
 
 ## Getting Started
 
@@ -85,32 +85,6 @@ Run etl.py:
 ```cmd
 
 docker compose run --rm jupyter_notebook python src/scripts/etl.py
-
-```
-
-### Check Data
-
-Open test.ipynb and run the queries.
-
->Make sure to restart the kernel.
-
-### Example Queries
-
-Open test.ipynb, run the queries.
-
-Only return songplay activity from Tampa-St. Petersburg-Clearwater, FL:
-
-```sql
-
-%sql SELECT * FROM songplays WHERE songplays.location='Tampa-St. Petersburg-Clearwater, FL';
-
-```
-
-Show how much total songplay activity by user id:
-
-```sql
-
-%sql SELECT user_id, COUNT(songplay_id) FROM songplays GROUP BY user_id;
 
 ```
 
