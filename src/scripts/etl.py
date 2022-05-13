@@ -9,8 +9,8 @@ def process_song_file(cur, filepath):
     """Process song file data.
 
     Args:
-        cur: psycopg cursor 
-        filepath: filepath to song data 
+        cur (cursor): psycopg cursor 
+        filepath (str): filepath to song data 
     """
 
     # open song file
@@ -30,8 +30,8 @@ def process_log_file(cur, filepath):
     """Process log file data.
 
     Args:
-        cur: psycopg cursor 
-        filepath: filepath to log data 
+        cur (cursor): psycopg cursor 
+        filepath (str): filepath to log data 
     """
 
     # open log file
@@ -79,10 +79,10 @@ def process_data(cur, conn, filepath, func):
     """Process data.
 
     Args:
-        cur: psycopg cursor 
-        conn: Encapsulation of PostgreSQL database session
-        filepath: filepath 
-        func: function name 
+        cur (cursor): psycopg cursor 
+        conn (connetion): Encapsulation of PostgreSQL database session
+        filepath (str): filepath 
+        func (func): function name 
     """
 
     # get all files matching extension from directory
@@ -104,7 +104,9 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
-    """Driver function for ETL pipeline."""
+    """
+    Establishes a connection with the sparkify database, get's the cursor to it and extracts, transforms and loads the song and log data before closing the connection.
+    """
 
     POSTGRES_HOST = "sparkifydb"
     POSTGRES_DB = "sparkifydb"
