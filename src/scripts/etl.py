@@ -6,6 +6,13 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """Process song file data.
+
+    Args:
+        cur: psycopg cursor 
+        filepath: filepath to song data 
+    """
+
     # open song file
     df = pd.read_json(filepath, lines=True)    
     
@@ -20,6 +27,13 @@ def process_song_file(cur, filepath):
     
 
 def process_log_file(cur, filepath):
+    """Process log file data.
+
+    Args:
+        cur: psycopg cursor 
+        filepath: filepath to log data 
+    """
+
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -62,6 +76,15 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """Process data.
+
+    Args:
+        cur: psycopg cursor 
+        conn: Encapsulation of PostgreSQL database session
+        filepath: filepath 
+        func: function name 
+    """
+
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -81,6 +104,8 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """Driver function for ETL pipeline."""
+
     POSTGRES_HOST = "sparkifydb"
     POSTGRES_DB = "sparkifydb"
     POSTGRES_USER = os.environ.get('POSTGRES_USER')
