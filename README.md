@@ -110,7 +110,7 @@ docker exec -it jupyter bash
 │
 ├── services
 |    └── jupyter
-|        └── Dockerfile        <- Docker file for jupter notebook.
+|        └── Dockerfile         <- Docker file for jupter notebook.
 |
 |
 ├── src                         <- Source code for use in this project.
