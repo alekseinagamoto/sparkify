@@ -104,25 +104,25 @@ docker exec -it jupyter bash
 |
 |
 ├── data
-│   ├── log_data                <- Activity data.
-│   └── song_data               <- Song data.
-│
-│
+|   ├── log_data                <- Activity data.
+|   └── song_data               <- Song data.
+|
+|
 ├── services
 |    └── jupyter
 |        └── Dockerfile         <- Docker file for jupter notebook.
 |
 |
 ├── src                         <- Source code for use in this project.
-│   ├── notebooks           
-│   |   ├── etl.ipynb           <- Notebook for ETL development.
-│   |   └── test.ipynb          <- Notebook for ETL testing.
-│   |         
+|   ├── notebooks           
+|   |   ├── etl.ipynb           <- Notebook for ETL development.
+|   |   └── test.ipynb          <- Notebook for ETL testing.
+|   |         
 |   └── scripts  
-│       ├── etl.py              <- Script to execute ETL pipeline.
+|       ├── etl.py              <- Script to execute ETL pipeline.
 |       ├── create_tables.py    <- Script to create database and tables.
-│       └── sql_queries.py      <- Script with SQL queries.
-│      
+|       └── sql_queries.py      <- Script with SQL queries.
+|      
 |
 ├── docker-compose.yml          <- Docker-compose file for running the services.
 |
